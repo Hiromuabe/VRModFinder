@@ -9,4 +9,5 @@
    pip install --upgrade pip && pip install -r requirements.txt
    ```
 3. Change path for json file in clip_code.py, line 65.
-4. ```python index.py```
+4. Change path for OpenAI API in gpt.py, line 6.
+5. ```python index.py```
