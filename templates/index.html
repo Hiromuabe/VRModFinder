@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>絞り込み</title>
+    </head>
+    <body>
+        <h1>VRModFinder検索エンジン</h1>
+        <div class_="input">
+            <form action="" method="post">
+                <label>Input your purpose of VR Space </label>
+                <input type="text" name="keyword">
+                <input type="submit" value="send GPT-4!!!">
+            </form>
+        </div>
+        {% if interior %}
+            <div class_="output">
+                <h2>Output</h2>
+                <p>インテリアの種類</p>
+                <p>{{ interior }}</p>
+                <p>インテリアの特徴</p>
+                <p>{{ features }}</p>
+                <p>インテリアの個数</p>
+                <p> {{ number }}</p>
+                <form action="" method="post">
+                    <input type="submit" name="start" value="Search">
+                </form>
+            </div>
+        {% endif %}
+    </body>
+</html>
