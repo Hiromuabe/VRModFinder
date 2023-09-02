@@ -1,6 +1,35 @@
 import openai
 import os
 import re
+def gpt_translate(input_text):
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    prompt = "以下の日本語を英語にしてください。"
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": input_text},
+                    {"role":"system","content":"ただし結果のみ返信してください。"}
+                    ]
+        )
+
+    en_text = response["choices"][0]["message"]["content"]
+    return en_text
+
+def gpt_translate_ja(input_text):
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    prompt = "以下の英文をわかりやすい日本語に和訳してください"
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": input_text},
+                    {"role":"system","content":"ただし結果のみ返信してください。"}
+                    ]
+        )
+
+    ja_text = response["choices"][0]["message"]["content"]
+    return ja_text
 
 def gpt_interior(input_text):
     openai.api_key = os.getenv("OPENAI_API_KEY")

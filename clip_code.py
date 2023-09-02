@@ -62,7 +62,7 @@ def score_clip(url:str,feature:str,device="cpu"):
         return probs[0][0]
     
 def squeeze(interior_names):
-    file = open("YOUR_FILE")
+    file = open("data.json")
     file = json.load(file)
 
     names = [[] for _ in range(len(interior_names))]

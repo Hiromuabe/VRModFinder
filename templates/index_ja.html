@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Find</title>
+        <title>絞り込み</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -61,20 +61,20 @@
 
                 if (interiorElement) {
                     let interiorText = interiorElement.textContent;
-                    interiorText = interiorText.replace(/,/g, "、<br>");
+                    interiorText = interiorText.replace(/、/g, "<br>");
                     interiorElement.innerHTML = interiorText;
                 }
 
                 if (featuresElement) {
                     let featuresText = featuresElement.textContent;
-                    featuresText = featuresText.replace(/,/g, "、<br>");
+                    featuresText = featuresText.replace(/。/g, "<br>");
                     featuresElement.innerHTML = featuresText;
                 }
             });
         </script>
     </head>
     <body>
-        <h1>VRModFinder searching engine</h1>
+        <h1>VRModFinder検索エンジン</h1>
         <div class="input">
             <form action="" method="post">
                 <label>Input your purpose of VR Space </label>
@@ -85,11 +85,11 @@
         {% if interior %}
             <div class="output">
                 <h2>Output</h2>
-                <h4>Interior</h4>
+                <h4>インテリアの種類</h4>
                 <p id="interior">{{ interior }}</p>
-                <h4>Features</h4>
+                <h4>インテリアの特徴</h4>
                 <p id="features">{{ features }}</p>
-                <h4>Number</h4>
+                <h4>インテリアの個数</h4>
                 <p> {{ number }}</p>
                 <form action="" method="post">
                     <input type="submit" name="start" value="Search">
