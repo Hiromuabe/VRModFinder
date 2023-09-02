@@ -31,10 +31,10 @@ def gpt_translate_ja(input_text):
     ja_text = response["choices"][0]["message"]["content"]
     return ja_text
 
-def gpt_interior(input_text):
+def gpt_interior(input_text,number):
     openai.api_key = os.getenv("OPENAI_API_KEY")
     prompt1 = "You are a space designer. "
-    prompt2 = "Output three types of interior from the following space concept."
+    prompt2 = f"Output {number} types of interior from the following space concept."
     prompt_input = "Space Concept: " + input_text
     prompt3 = "And the name of the interior should be simple and singular form, like table and desk."
     prompt_not = "Don't output room name like library or kitchen."

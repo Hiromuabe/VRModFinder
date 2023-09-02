@@ -112,13 +112,13 @@ def squeeze(interior_names):
         uids[_] = list(set(uids[_]))
     return names, urls, uids
 
-def get_uid(interior_list, features_list,names,urls,uids):
+def get_uid(interior_list, features_list,names,urls,uids,device="cpu"):
     scores = [[] for _ in range(len(interior_list))]
     selected_uid = []
     selected_name = []
     for i in tqdm(range(len(urls))):
         for j in tqdm(range(len(urls[i]))):
-            scores[i].append(score_clip(urls[i][j],features_list[i],"mps"))
+            scores[i].append(score_clip(urls[i][j],features_list[i],device))
         index = scores[i].index(max(scores[i]))
         selected_uid.append(uids[i][index])
         selected_name.append(names[i][index])

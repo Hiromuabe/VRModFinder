@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>検索</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+
+            h1, h2 {
+                color: #333366;
+            }
+
+            .input, .output {
+                border: 1px solid #ccc;
+                padding: 10px;
+                margin: 10px 0;
+            }
+
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                border: none;
+                cursor: pointer;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+            img {
+                max-width: 400px;
+                max-height: 200px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>VRModFinder検索エンジン</h1>
+        <h2>検索には時間がかかります。</h2>
+
+        <div class_="output">
+            <h2>Output</h2>
+            <h4>インテリアの種類</h4>
+            <p>{{ interior }}</p>
+            <h4>インテリアの特徴</h4>
+            <p>{{ features }}</p>
+            <h4>インテリアの個数</h4>
+            <p> {{ number }}</p>
+        </div>
+
+        <h2>検索を開始するには以下のボタンを押してください。</h2>
+        <form action="" method="post">
+            
+            <input type="submit" name="search" value="Search">
+        </form>
+
+        {% if selected_name %}
+
+            <h2>検索結果</h2>
+            <h3>選択されたインテリア</h3>
+            {% for uid,name in selected_zip %}
+                <h4>名前</h4>
+                <p>{{ name }}</p>
+                <h4>uid</h4>
+                <p>{{ uid }}</p>
+                <h4>画像</h4>
+                <img src="{{ url_for('static', filename=name + '.jpg') }}" alt="{{ uid }} width=400pt height=200pt">
+            {% endfor %}
+            <h2>ダウンロードされました。</h2>
+
+
+
+        {% endif %}
+    </body>
+</html>

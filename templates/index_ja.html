@@ -77,7 +77,23 @@
         <h1>VRModFinder検索エンジン</h1>
         <div class="input">
             <form action="" method="post">
-                <label>Input your purpose of VR Space </label>
+                <label>出力するオブジェクトの個数:</label>
+                <select name="number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br>
+                <label>デバイスを選択してください。</label>
+                <select name="device">
+                    <option value="cpu">CPU</option>
+                    <option value="gpu">GPU</option>
+                    <option value="mps">MPS</option>
+                </select>
+                <br>
+                <label>VR空間の利用目的を入力してください。</label>
                 <input type="text" name="keyword">
                 <input type="submit" value="send GPT-4!!!">
             </form>
