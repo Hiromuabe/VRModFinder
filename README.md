@@ -11,7 +11,7 @@
 3. Change path for json file in clip_code.py, line 65.
 4. Change path for OpenAI API in gpt.py, line 6.
 5. If you'd like to use its Eng ver,
-   ```python index_en.py``` <br>
-   
+   ```python index_en.py```
+
    If you'd like to use its Japanese ver,
    ```python index_ja.py```
