@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import openai
 from gpt import gpt_interior, gpt_feature, gpt_number,gpt_translate,gpt_translate_ja
 from clip_code import *
+from other_code import *
 app = Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])
@@ -31,11 +32,24 @@ def search():
     if request.method == "GET":
         return render_template('search_ja.html',interior=interior,features=features,number=number)
     else:
-        names, urls, uids = squeeze(interior)
-        selected_name, selected_uid = get_uid(interior, features, names,urls, uids,device)
-        install_obj(selected_uid)
-        return render_template('search_ja.html',interior=interior,features=features,number=number,selected_name=selected_name,selected_uid=selected_uid)
-
+        if "object_uid" in request.form:
+            uid = request.form["object_uid"]
+            return redirect(url_for("watch", uid=uid))
+        else:
+            names, urls, uids = squeeze(interior)
+            selected_name, selected_uid = get_uid(interior, features, names,urls, uids,device)
+            install_obj(selected_uid)
+            names = save_img(selected_uid, "./data.json")
+            return render_template('search_ja.html',interior=interior,features=features,number=number,selected_name=selected_name,selected_uid=selected_uid)
+    
+@app.route("/watch", methods=['GET', 'POST'])
+def watch():
+    if request.method == "GET":
+        uid = request.args.get("uid", None)
+        if uid:
+            return render_template('watch.html', uid=uid)
+        else:
+            return "No uid provided", 400
 
     
 if __name__ == "__main__":

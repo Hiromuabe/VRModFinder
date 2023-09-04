@@ -22,12 +22,21 @@
     
   </head>
   <body>
+    <script>
+      // uidをFlaskから受け取る
+      const uid = "{{ uid }}";
+      
+      // uidを使ってsrc属性をセット
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const modelViewer = document.querySelector("model-viewer");
+        modelViewer.src = `/static/object/${uid}.glb`;
+      });
+    </script>
     <model-viewer
-      src="./index.glb"
       alt="A 3D model"
       auto-rotate
       camera-controls
       ar
     ></model-viewer>
-  </body>
+    </body>
 </html>

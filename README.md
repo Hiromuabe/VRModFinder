@@ -15,3 +15,8 @@
 
    If you'd like to use its Japanese ver,
    ```python index_ja.py```
+
+
+------------------------------------------------------
+### Before use this system...
+- Please change __init__.py in venv's .objaverse folder to change_init_objv.py.(copy & paste code)

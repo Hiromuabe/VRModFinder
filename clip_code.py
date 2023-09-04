@@ -125,10 +125,8 @@ def get_uid(interior_list, features_list,names,urls,uids,device="cpu"):
     return selected_name, selected_uid
 
 def install_obj(uid):
-    processes = mp.cpu_count()
     objaverse.load_objects(
-        uids=uid,
-        download_processes=processes
+        uids=uid
     )
     print("finish")
     return

@@ -1,2 +1,5 @@
 /venv
 data.json
+/static/*
+/static/*.jpg
+/.vscode/

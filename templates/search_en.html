@@ -57,21 +57,22 @@
         </form>
 
         {% if selected_name %}
-
             <h2>Result</h2>
             <h3>Selected interiors</h3>
-            {% for uid,name in selected_zip %}
-            <h4>names</h4>
+            {% for uid, name in selected_zip %}
+                <h4>names</h4>
                 <p>{{ name }}</p>
-            <h4>uid</h4>
+                <h4>uid</h4>
                 <p>{{ uid }}</p>
-            <h4>image</h4>
-                <img src="{{ url_for('static', filename=name + '.jpg') }}" alt="{{ uid }} width=400pt height=200pt">
-            {% endfor %}¥
+                <h4>image</h4>
+                <h5>You can 3DCG model if you click this image</h5>
+                <a href="{{ url_for('watch', uid=uid) }}">
+                    <img src="{{ url_for('static', filename=name + '.jpg') }}" alt="{{ uid }}" width="400pt" height="200pt">
+                </a>
+            {% endfor %}
+
             <h2>Finish downloading objects!!!</h2>
-
-
-
         {% endif %}
+
     </body>
 </html>
