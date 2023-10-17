@@ -45,6 +45,7 @@ def gpt_interior(input_text,number):
     model="gpt-4",
     messages=[
                 {"role": "system", "content": prompt1+prompt2},
+                {"role": "system", "content": prompt2_1},
                 {"role": "user", "content": prompt_input},
                 {"role":"system","content":prompt3},
                 {"role":"system","content":prompt_not},
@@ -59,6 +60,7 @@ def gpt_interior(input_text,number):
 def gpt_feature(input_text, interior_name):
     prompt5 = "You are a space designer. "
     prompt6 = f"Please output the characteristics of {interior_name} from the following space concept."
+    prompt6_1 = f"if you output features of 3 types of interior, please do it like 'red and leather,soft and yellow,white and wood'"
     prompt_input = "Space Concept: " + input_text
     prompt7 = "Please express very short their characteristics in terms of color, size, and texture like yellow and leather."
     prompt8 = "Please output only characteristics like desk:white and leather."
@@ -67,6 +69,7 @@ def gpt_feature(input_text, interior_name):
     model="gpt-4",
     messages=[
                 {"role": "system", "content": prompt5+prompt6},
+                {"role": "system", "content": prompt6_1},
                 {"role": "user", "content": prompt_input},
                 {"role":"system","content":prompt7},
                 {"role":"system","content":prompt8},

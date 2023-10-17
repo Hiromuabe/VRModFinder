@@ -10,6 +10,7 @@
 
             h1 {
                 color: #333366;
+                font-size: 3em; !important
             }
 
             .input, .output {
@@ -17,14 +18,16 @@
                 padding: 10px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
+                font-size: 1.5em; !important
             }
 
             label {
                 font-weight: bold;
+
             }
 
             input[type="text"] {
-                width: 80%;
+                width: 100%;
                 padding: 8px;
                 margin-top: 5px;
                 border-radius: 4px;
@@ -75,7 +78,7 @@
     </head>
     <body>
         <h1>VRModFinder searching engine</h1>
-        <div class="input">
+        <div class="input" style="font: size 10px;">
             <form action="" method="post">
                 <label>How many models do you want???</label>
                 <select name="number">
@@ -99,7 +102,7 @@
             </form>
         </div>
         {% if interior %}
-            <div class="output">
+            <div class="output" >
                 <h2>Output</h2>
                 <h4>Interior</h4>
                 <p id="interior">{{ interior }}</p>

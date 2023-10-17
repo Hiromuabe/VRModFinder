@@ -15,8 +15,8 @@ def index():
         device = request.form["device"]
         input_text = request.form["keyword"]
         interior = gpt_interior(input_text,input_number)
-        print(f"index:{interior}")
         features = gpt_feature(input_text,interior)
+        print(features)
         number = gpt_number(input_text,interior)
         return redirect(url_for("search", interior=",".join(interior), features=features, number=number,device=device))
 
