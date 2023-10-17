@@ -10,23 +10,27 @@ def index():
     if request.method == "GET":
         return render_template('index.html')
     else:
-        if "start" in request.form:
-            return redirect(url_for("search"))
-        else:
-            global interior, features, number,device
-            input_number = request.form["number"]
-            device = request.form["device"]
-            input_text = request.form["keyword"]
-            interior = gpt_interior(input_text,input_number)
-            features = gpt_feature(input_text,interior)
-            number = gpt_number(input_text,interior)
-            return render_template('index.html',interior=",".join(interior),features=",".join(features),number=number)
+        global interior, features, number,device
+        input_number = request.form["number"]
+        device = request.form["device"]
+        input_text = request.form["keyword"]
+        interior = gpt_interior(input_text,input_number)
+        print(f"index:{interior}")
+        features = gpt_feature(input_text,interior)
+        number = gpt_number(input_text,interior)
+        return redirect(url_for("search", interior=",".join(interior), features=features, number=number,device=device))
 
 @app.route("/search",methods=['GET',"POST"])
 def search():
     global interior, features, number,device
     if request.method == "GET":
-        return render_template('search_en.html',interior=interior,features=features,number=number)
+        interior = request.args.get("interior")
+        print(f'search:{interior}')
+        print(interior)
+        features = request.args.get("features")
+        number = request.args.get("number")
+        device = request.args.get("device")
+        return render_template("search_en.html",interior=interior,features=features,number=number)
     else:
         if "object_uid" in request.form:
             uid = request.form["object_uid"]

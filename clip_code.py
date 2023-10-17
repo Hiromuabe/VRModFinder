@@ -62,9 +62,10 @@ def score_clip(url:str,feature:str,device="cpu"):
         return probs[0][0]
     
 def squeeze(interior_names):
+    print(f"squeeze:{interior_names}")
     file = open("data.json")
     file = json.load(file)
-
+    interior_names = interior_names.split(",")
     names = [[] for _ in range(len(interior_names))]
     urls = [[] for _ in range(len(interior_names))]
     uids = [[] for _ in range(len(interior_names))]
@@ -72,6 +73,7 @@ def squeeze(interior_names):
     for _ in range(len(interior_names)):
         points = []
         interior = interior_names[_]
+        print("インテリア名")
         print(interior)
         # interior = "writing desk"
         # interior_name_parts = ["writing","desk"]
